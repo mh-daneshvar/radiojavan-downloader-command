@@ -1,0 +1,32 @@
+{
+  "name": "radiojavandownloader",
+  "version": "0.0.7",
+  "description": "a downloader tool using command line",
+  "keywords": [
+    "radionjavan"
+  ],
+  "author": "daneshvar.email@gmail.com",
+  "license": "ISC",
+  "type": "commonjs",
+  "main": "./index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist",
+    "start:dev": "npm run build && node ./dist"
+  },
+  "bin": {
+    "rj": "/dist/index.js"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "boxen": "4.0.0",
+    "chalk": "2.4.2",
+    "yargs": "13.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "15.12.5",
+    "@types/yargs": "17.0.0",
+    "ts-node": "10.0.0",
+    "typescript": "4.3.4"
+  }
+}
