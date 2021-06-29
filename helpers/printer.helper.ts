@@ -5,8 +5,15 @@ export default class PrinterHelper {
   /**
    *
    */
+  static askTheUrl(): string {
+    return chalk.green.bold('What is the url of song?\n');
+  }
+
+  /**
+   *
+   */
   static printHeader() {
-    console.log(chalk.white.bold('This is a tool for geeks to download from RadioJavan.com!'));
+    console.log(chalk.white('This is a tool for geeks to download from RadioJavan.com!'));
   }
 
   /**

@@ -11,15 +11,15 @@ import CommandLineHelper from './helpers/commandLine.helper'
  * - https://www.radiojavan.com/podcasts/podcast/Didare-Jaan-28
  */
 (async () => {
+
+  const url = await new CommandLineHelper().askTheUrl()
   PrinterHelper.printHeader()
-  const args = CommandLineHelper.getCommands()
-  let url = args.url
   if (url && url.length) {
-    url = url.replace(/\\/g, '')
     const rjDownloader = new RadioJavanHelper(url)
     const downloadAddress = await rjDownloader.getDownloadUrl();
     PrinterHelper.printURL(downloadAddress)
-  }else{
+  } else {
     PrinterHelper.printError('The given url is not valid!')
   }
+
 })();
