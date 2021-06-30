@@ -1,30 +1,43 @@
 import axios from 'axios';
 
+enum MEDIA_TYPES {
+  MP3 = 'mp3',
+  PODCAST = 'podcast',
+}
+
 export default class RadioJavanHelper {
   private readonly url: string = ''
 
+  /**
+   * Constructor
+   *
+   * @param url
+   */
   constructor(url: string) {
-    // Sanitize the url
+    // Sanitize the given url
     this.url = url.split('?')[0]
   }
 
+  /**
+   * Extract type from the given url
+   */
   extractType() {
     const url = this.url
     if (url.includes('mp3s/mp3')) {
-      return 'mp3'
+      return MEDIA_TYPES.MP3
     } else if (url.includes('podcasts/podcast')) {
-      return 'podcast'
+      return MEDIA_TYPES.PODCAST
     } else {
       throw new Error('Oh man! We still don\'t support this type')
     }
   }
 
   /**
-   * Example of output:
-   * Mr-Kiarash-Esmeto-Daad-Mizanam
-   * @returns {*}
+   * Extract perm from the given url
+   * Example of output: Mr-Kiarash-Esmeto-Daad-Mizanam
+   *
    */
-  extractPerm() {
+  extractPerm(): string {
     const url = this.url
     const splittedArray = url.split('/')
     if (splittedArray.length) {
@@ -39,9 +52,9 @@ export default class RadioJavanHelper {
    */
   extractCurrentMP3Url() {
     const type = this.extractType()
-    if (type === 'mp3') {
-      return `mp3/mp3-256/${ this.extractPerm() }.mp3`
-    } else if (type === 'podcast') {
+    if (type === MEDIA_TYPES.MP3) {
+      return `mp3/mp3-312/${ this.extractPerm() }.mp3`
+    } else if (type === MEDIA_TYPES.PODCAST) {
       // TODO: handle this situation too
     }
     throw new Error('Could not extract currentMP3Url!')
@@ -55,9 +68,9 @@ export default class RadioJavanHelper {
     // Find the api-address based on type of url
     let apiAddress = null
     const type = this.extractType()
-    if (type === 'mp3') {
+    if (type === MEDIA_TYPES.MP3) {
       apiAddress = 'https://www.radiojavan.com/mp3s/mp3_host'
-    } else if (type === 'podcast') {
+    } else if (type === MEDIA_TYPES.PODCAST) {
       apiAddress = 'https://www.radiojavan.com/podcasts/podcast_host'
     }
 
@@ -84,9 +97,6 @@ export default class RadioJavanHelper {
 
   /**
    *
-   * @param hostAddress: https://host2.rj-mw1.com
-   * @param currentMP3Url: mp3s/mp3/Mehraad-Jam-Didi
-   * @returns {Promise<string|Element>}
    */
   async getDownloadUrl() {
     const hostAddress = await this.getHost()
