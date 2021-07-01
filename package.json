@@ -1,9 +1,9 @@
 {
   "name": "radiojavandownloader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "one another downloader for radio javan using command line",
   "keywords": [
-    "radionjavan",
+    "radiojavan",
     "nodejs",
     "typescript",
     "iran",
