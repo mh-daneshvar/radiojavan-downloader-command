@@ -1,9 +1,14 @@
 {
   "name": "radiojavandownloader",
-  "version": "0.1.0",
-  "description": "a downloader tool using command line",
+  "version": "0.1.1",
+  "description": "one another downloader for radio javan using command line",
   "keywords": [
-    "radionjavan"
+    "radionjavan",
+    "nodejs",
+    "typescript",
+    "iran",
+    "music",
+    "downloader"
   ],
   "author": "daneshvar.email@gmail.com",
   "license": "ISC",
