@@ -12,7 +12,7 @@ If you have any ethical issue, please contact me.
 ## How to use (for consumers)
 - install the package
 ```console
-npm i radiojavandownloader
+npm i -g radiojavandownloader
 ```
 - copy the url of your favorite music, then run this command
 ```console
