@@ -55,7 +55,7 @@ export default class RadioJavanHelper {
     if (type === MEDIA_TYPES.MP3) {
       return `mp3/mp3-312/${ this.extractPerm() }.mp3`
     } else if (type === MEDIA_TYPES.PODCAST) {
-      // TODO: handle this situation too
+      return `podcast/mp3-312/${ this.extractPerm() }.mp3`
     }
     throw new Error('Could not extract currentMP3Url!')
   }
